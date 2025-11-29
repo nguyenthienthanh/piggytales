@@ -1,0 +1,58 @@
+# PiggyTales User Preferences
+
+# Display preferences
+display:
+  show_progress: true
+  show_phase_details: true
+  console_emojis: true
+
+# Notification preferences
+notifications:
+  on_phase_complete: true
+  on_council_review: true
+  on_human_required: true
+  on_error: true
+
+# Auto behaviors
+auto:
+  autosave: true
+  autosave_interval: "5m"
+  auto_checkpoint: true
+  auto_council_below_score: 6.5
+
+# Language preferences
+language:
+  interface: vi
+  content_primary: vi
+  content_secondary: en
+  seo_languages: [vi, en]
+
+# API preferences
+apis:
+  vbee:
+    enabled: true
+    default_voice: null  # Set by user
+
+  elevenlabs:
+    enabled: true
+
+  image_generation:
+    enabled: false  # Manual mode default
+    tool: null
+
+  video_generation:
+    enabled: false  # Manual mode default
+    tool: null
+
+# Quality preferences
+quality:
+  default_level: standard
+  auto_regenerate_below: 5.0
+  max_regeneration_attempts: 3
+
+# Export preferences
+export:
+  default_format: folder
+  include_reports: true
+  include_prompts: true
+  include_guides: true

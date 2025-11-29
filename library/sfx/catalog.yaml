@@ -1,0 +1,130 @@
+# PiggyTales SFX Library Catalog
+
+# Library information
+library_info:
+  name: "PiggyTales SFX Library"
+  version: "1.0"
+  last_updated: "2024-01"
+  total_sounds: 50
+  child_safe: true
+
+# Sound categories
+categories:
+  ambient:
+    description: "Background atmosphere sounds"
+    sounds:
+      - id: amb-forest-01
+        name: "Forest Ambience"
+        description: "Peaceful forest with birds"
+        duration: 30s
+        loop: true
+        file: ambient/forest-01.mp3
+
+      - id: amb-rain-gentle-01
+        name: "Gentle Rain"
+        description: "Soft rain on leaves"
+        duration: 30s
+        loop: true
+        file: ambient/rain-gentle-01.mp3
+
+      - id: amb-wind-soft-01
+        name: "Soft Wind"
+        description: "Gentle breeze"
+        duration: 30s
+        loop: true
+        file: ambient/wind-soft-01.mp3
+
+  action:
+    description: "Action and movement sounds"
+    sounds:
+      - id: act-footsteps-grass-01
+        name: "Footsteps on Grass"
+        description: "Walking on grass"
+        duration: 2s
+        loop: false
+        file: action/footsteps-grass-01.mp3
+
+      - id: act-door-wood-01
+        name: "Wooden Door"
+        description: "Opening wooden door"
+        duration: 1.5s
+        loop: false
+        file: action/door-wood-01.mp3
+
+      - id: act-splash-small-01
+        name: "Small Splash"
+        description: "Small water splash"
+        duration: 1s
+        loop: false
+        file: action/splash-small-01.mp3
+
+  emotional:
+    description: "Emotional accent sounds"
+    sounds:
+      - id: emo-magic-sparkle-01
+        name: "Magic Sparkle"
+        description: "Whimsical magic sound"
+        duration: 1.5s
+        loop: false
+        file: emotional/magic-sparkle-01.mp3
+
+      - id: emo-happy-chime-01
+        name: "Happy Chime"
+        description: "Cheerful bell sound"
+        duration: 1s
+        loop: false
+        file: emotional/happy-chime-01.mp3
+
+      - id: emo-wonder-01
+        name: "Wonder"
+        description: "Amazement sound"
+        duration: 2s
+        loop: false
+        file: emotional/wonder-01.mp3
+
+  character:
+    description: "Character expression sounds"
+    sounds:
+      - id: chr-sigh-gentle-01
+        name: "Gentle Sigh"
+        description: "Soft contented sigh"
+        duration: 1s
+        loop: false
+        file: character/sigh-gentle-01.mp3
+
+      - id: chr-gasp-soft-01
+        name: "Soft Gasp"
+        description: "Surprised gasp (gentle)"
+        duration: 0.5s
+        loop: false
+        file: character/gasp-soft-01.mp3
+
+      - id: chr-laugh-child-01
+        name: "Child Laugh"
+        description: "Happy child laughter"
+        duration: 2s
+        loop: false
+        file: character/laugh-child-01.mp3
+
+  transition:
+    description: "Scene transition sounds"
+    sounds:
+      - id: trans-whoosh-soft-01
+        name: "Soft Whoosh"
+        description: "Gentle transition"
+        duration: 0.5s
+        loop: false
+        file: transition/whoosh-soft-01.mp3
+
+      - id: trans-fade-magic-01
+        name: "Magic Fade"
+        description: "Magical transition"
+        duration: 1s
+        loop: false
+        file: transition/fade-magic-01.mp3
+
+# Safety note
+safety:
+  note: "All sounds in this library are verified child-safe"
+  no_startling: true
+  max_volume: "moderate"

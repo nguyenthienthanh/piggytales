@@ -1,0 +1,79 @@
+# PiggyTales Workflow Configuration
+
+# Workflow modes
+modes:
+  full:
+    phases: [discovery, script, asset, production]
+    council_mode: deep
+    council_points: [after_discovery, after_script, after_asset, after_production]
+    human_gates: [discovery, script, asset, final]
+
+  standard:
+    phases: [discovery, script, asset, production]
+    phase_optional: [discovery]
+    council_mode: standard
+    council_points: [after_script, after_production]
+    human_gates: [script, final]
+
+  lite:
+    phases: [script, production]
+    council_mode: quick
+    council_points: [after_production]
+    human_gates: [final]
+
+  express:
+    phases: [script, production]
+    production_limited: [voice_only]
+    council_mode: none
+    human_gates: []
+
+# Council modes
+council:
+  deep:
+    reviewers: [critic, optimist, analyst]
+    iterations: 2
+    debate: true
+    human_summary: true
+
+  standard:
+    reviewers: [critic, optimist, analyst]
+    iterations: 1
+    debate: true
+    human_summary: false
+
+  quick:
+    reviewers: [analyst]
+    iterations: 1
+    debate: false
+
+  none:
+    reviewers: []
+    qa_only: true
+
+# Complexity settings
+complexity:
+  simple:
+    council_reviews: 1
+    human_gates_max: 1
+    revision_rounds: 1
+
+  standard:
+    council_reviews: 2
+    human_gates_max: 2
+    revision_rounds: 2
+
+  complex:
+    council_reviews: 4
+    human_gates_max: 4
+    revision_rounds: unlimited
+    extra_iterations: true
+
+# Required agents (cannot skip)
+required_agents:
+  - legal-checker
+  - script-writer
+  - emotion-tagger
+  - voice-producer
+  - seo-writer
+  - qa-reviewer
+  - project-manager

@@ -1,0 +1,63 @@
+# PiggyTales Project Configuration
+
+# Project defaults
+defaults:
+  workflow_mode: standard
+  complexity: standard
+  audience: children
+  platforms:
+    - youtube
+    - tiktok
+  language: vi
+
+# Content type defaults
+content_types:
+  audiobook:
+    default_preset: audiobook-full
+    default_workflow: standard
+    voice_required: true
+    visuals_required: false
+
+  animation:
+    default_preset: animation-full
+    default_workflow: full
+    voice_required: true
+    visuals_required: true
+
+  short:
+    default_preset: animation-short
+    default_workflow: standard
+    voice_required: true
+    visuals_required: true
+    platform: tiktok
+
+  music-video:
+    default_preset: music-video
+    default_workflow: standard
+    voice_required: false
+    visuals_required: true
+
+# Quality thresholds
+quality:
+  viral_score:
+    excellent: 8.0
+    good: 6.5
+    acceptable: 5.0
+    minimum: 5.0
+
+  require_human_below: 5.0
+  require_council_below: 6.5
+
+# File settings
+files:
+  naming_convention: "{project}-{phase}-{type}-{identifier}-v{version}.{ext}"
+  voice_format: mp3
+  image_format: png
+  video_format: mp4
+  report_format: docx
+
+# Auto-save settings
+autosave:
+  enabled: true
+  interval: 5m
+  checkpoints: true

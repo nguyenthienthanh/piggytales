@@ -1,0 +1,109 @@
+# PiggyTales Audience Configuration
+
+audiences:
+  children:
+    name: "Children"
+    age_range: "4-12"
+    description: "Young children"
+
+    language:
+      vocabulary: simple
+      max_sentence_length: 15
+      avoid:
+        - complex idioms
+        - slang
+        - abstract concepts
+
+    content:
+      themes:
+        allowed:
+          - friendship
+          - adventure
+          - family
+          - learning
+          - kindness
+          - animals
+          - nature
+          - magic (positive)
+        restricted:
+          - conflict (mild, resolved positively)
+          - sadness (brief, with resolution)
+        prohibited:
+          - violence
+          - horror
+          - romance
+          - complex social issues
+
+    visuals:
+      style: bright, friendly, kawaii
+      colors: pastel, vibrant
+      avoid:
+        - dark imagery
+        - scary characters
+        - complex scenes
+
+    audio:
+      voice_tone: warm, friendly
+      pace: moderate
+      sfx: gentle, non-startling
+
+  teenagers:
+    name: "Teenagers"
+    age_range: "13-17"
+    description: "Teen audience"
+
+    language:
+      vocabulary: moderate
+      max_sentence_length: 25
+      allow:
+        - contemporary expressions
+        - moderate complexity
+
+    content:
+      themes:
+        allowed:
+          - identity
+          - friendship
+          - challenges
+          - aspirations
+          - adventure
+          - mystery
+          - humor
+        restricted:
+          - mild romance (age-appropriate)
+          - peer pressure (positive resolution)
+        prohibited:
+          - explicit content
+          - drug references
+          - violence (graphic)
+
+    visuals:
+      style: contemporary, detailed
+      colors: varied, can be muted
+
+    audio:
+      voice_tone: authentic, relatable
+      pace: varied
+
+  family:
+    name: "Family"
+    age_range: "All ages"
+    description: "Multi-generational"
+
+    content:
+      note: "Must be safe for youngest viewer"
+      apply_rules_from: children
+
+    extras:
+      multi_level_humor: true
+      adult_appreciation: allowed
+
+  young-adult:
+    name: "Young Adult"
+    age_range: "18-25"
+    description: "Young adult audience"
+
+    content:
+      mature_themes: allowed
+      complexity: high
+      note: "Full creative freedom within platform rules"

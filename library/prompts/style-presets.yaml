@@ -1,0 +1,93 @@
+# PiggyTales Style Presets
+
+# Pre-defined visual styles for consistent generation
+style_presets:
+  kawaii:
+    name: "Kawaii"
+    description: "Cute Japanese-inspired style"
+    keywords:
+      - kawaii
+      - chibi
+      - cute
+      - pastel colors
+      - big eyes
+      - round shapes
+    colors:
+      primary: ["#FFB6C1", "#FF69B4", "#FFC0CB"]
+      accent: ["#FFD700", "#87CEEB"]
+    best_for: [children, characters]
+
+  storybook:
+    name: "Storybook"
+    description: "Classic illustrated storybook style"
+    keywords:
+      - storybook illustration
+      - watercolor
+      - soft edges
+      - warm colors
+      - whimsical
+    colors:
+      primary: ["#FFF8E7", "#FFE4B5"]
+      accent: ["#228B22", "#4169E1"]
+    best_for: [fairy_tales, classic_stories]
+
+  cartoon:
+    name: "Cartoon"
+    description: "Modern cartoon animation style"
+    keywords:
+      - cartoon
+      - animated
+      - bold colors
+      - clean lines
+      - expressive
+    colors:
+      primary: ["#FF4500", "#32CD32", "#1E90FF"]
+      accent: ["#FFD700", "#FF69B4"]
+    best_for: [animation, comedy]
+
+  soft_3d:
+    name: "Soft 3D"
+    description: "Soft 3D rendered style"
+    keywords:
+      - 3D render
+      - soft lighting
+      - rounded shapes
+      - clay-like
+      - friendly
+    colors:
+      primary: ["Warm pastels"]
+      accent: ["Soft highlights"]
+    best_for: [modern_content, versatile]
+
+  pixel_art:
+    name: "Pixel Art"
+    description: "Retro pixel art style"
+    keywords:
+      - pixel art
+      - retro
+      - 16-bit
+      - colorful
+      - nostalgic
+    colors:
+      primary: ["Limited palette"]
+    best_for: [gaming_content, teens]
+
+# Brand style (PiggyTales default)
+brand_style:
+  name: "PiggyTales Style"
+  description: "Official PiggyTales visual style"
+  base: kawaii
+  modifications:
+    mascots:
+      piggy:
+        color: "#FFB6C1"
+        features: "Pink pig, rosy cheeks, friendly"
+      shroom:
+        color: "#FF0000"
+        features: "Red mushroom, white spots, cheerful"
+    palette:
+      piggy_pink: "#FFB6C1"
+      shroom_red: "#FF0000"
+      soft_white: "#FFFFFF"
+      warm_cream: "#FFF8E7"
+      gold_accent: "#FFD700"

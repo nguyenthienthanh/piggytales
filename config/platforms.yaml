@@ -1,0 +1,78 @@
+# PiggyTales Platform Configuration
+
+platforms:
+  youtube:
+    name: "YouTube"
+    enabled: true
+
+    specs:
+      video:
+        aspect_ratio: "16:9"
+        resolution: "1920x1080"
+        max_duration: "unlimited"
+
+      thumbnail:
+        size: "1280x720"
+        format: "jpg/png"
+
+      metadata:
+        title_max: 100
+        description_max: 5000
+        tags_max: 500
+        tags_count: "10-15"
+
+    made_for_kids:
+      enabled: true
+      restrictions:
+        - no_personalized_ads
+        - no_comments
+        - no_notifications
+        - no_community_tab
+
+    seo:
+      hashtags_in_description: 3
+      keywords_vietnamese: true
+      keywords_english: true
+
+  youtube_shorts:
+    name: "YouTube Shorts"
+    enabled: true
+
+    specs:
+      video:
+        aspect_ratio: "9:16"
+        resolution: "1080x1920"
+        max_duration: 60
+
+      metadata:
+        title_include: "#Shorts"
+        description_brief: true
+
+    optimization:
+      hook_seconds: 3
+      loop_friendly: recommended
+
+  tiktok:
+    name: "TikTok"
+    enabled: true
+
+    specs:
+      video:
+        aspect_ratio: "9:16"
+        resolution: "1080x1920"
+        max_duration: 180
+
+      metadata:
+        caption_max: 2200
+        hashtags: "3-5"
+
+    optimization:
+      hook_seconds: 1
+      trending_sounds: optional
+      fyp_hashtags: recommended
+
+# Default platform priority
+default_priority:
+  - youtube
+  - tiktok
+  - youtube_shorts

@@ -1,0 +1,116 @@
+# PiggyTales Character Library
+
+# Brand mascots (always available)
+mascots:
+  piggy:
+    name: "Piggy"
+    role: "Critic, Quality Control"
+    emoji: "🐷"
+
+    appearance:
+      type: "Pig"
+      style: "Cute kawaii chibi"
+      body: "Round, soft pink"
+      color_primary: "#FFB6C1"
+      color_secondary: "#FF69B4"
+      features:
+        - "Big sparkly eyes with star highlights"
+        - "Rosy pink cheeks"
+        - "Small curly tail"
+        - "Tiny red mushroom cap hat"
+        - "Often holds golden quill pen or book"
+
+    expressions:
+      happy: "Big smile, eyes closed, rosy cheeks glowing"
+      thinking: "One eyebrow raised, hoof on chin"
+      concerned: "Slight frown, worried eyes"
+      celebrating: "Both hooves up, confetti around"
+
+    prompt_template: |
+      A cute chibi pink pig named Piggy, kawaii style,
+      soft pastel pink body (#FFB6C1), rosy cheeks,
+      big sparkly eyes with star highlights,
+      small curly tail, wearing tiny red mushroom cap hat,
+      {expression}, {action},
+      {setting},
+      high quality, detailed, friendly atmosphere
+
+  shroom:
+    name: "Shroom"
+    role: "Optimist, Creativity"
+    emoji: "🍄"
+
+    appearance:
+      type: "Mushroom"
+      style: "Cute kawaii chibi Amanita muscaria"
+      body: "Red cap with white spots, cream stem"
+      color_primary: "#FF0000"
+      color_secondary: "#FFFFFF"
+      features:
+        - "Bright red cap with white spots"
+        - "Cream/beige stem with cute face"
+        - "Big sparkly eyes"
+        - "Rosy cheeks"
+        - "Small stubby arms and legs"
+        - "Tiny pink bow"
+
+    expressions:
+      excited: "Wide eyes, big smile, slight bounce"
+      encouraging: "Thumbs up, warm smile"
+      creative: "Sparkles around, dreamy eyes"
+      celebrating: "Arms up, confetti, sparkles everywhere"
+
+    prompt_template: |
+      A cute chibi red mushroom named Shroom, kawaii Amanita muscaria style,
+      bright red cap (#FF0000) with white spots,
+      cream stem with adorable face, big sparkly eyes, rosy cheeks,
+      small stubby arms and legs, wearing tiny pink bow,
+      {expression}, {action},
+      {setting},
+      high quality, detailed, cheerful atmosphere
+
+# Combined mascot prompts
+duo:
+  together:
+    prompt_template: |
+      Piggy (cute pink pig) and Shroom (red mushroom) together,
+      kawaii chibi style, best friends pose,
+      Piggy: pink, rosy cheeks, mushroom cap hat, holding storybook,
+      Shroom: red with white spots, pink bow, sprinkling magic sparkles,
+      {setting},
+      friendly, warm, magical atmosphere,
+      high quality, detailed
+
+  logo:
+    prompt_template: |
+      Logo design for "PiggyTales" featuring
+      Piggy (pink pig) and Shroom (red mushroom) together,
+      friendly poses, best friends,
+      Piggy holding a storybook, Shroom with magic sparkles,
+      text "PiggyTales" in rounded child-friendly font,
+      tagline "Where Piggy & Shroom tell amazing tales",
+      pink, red, white, gold accent colors,
+      suitable for YouTube channel and social media
+
+# Character templates for stories
+templates:
+  child_protagonist:
+    base_traits:
+      - Friendly and curious
+      - Age-appropriate proportions
+      - Expressive face
+      - Bright colors
+
+  animal_friend:
+    base_traits:
+      - Cute and friendly
+      - Not threatening
+      - Anthropomorphic optional
+      - Colorful
+
+  wise_helper:
+    base_traits:
+      - Kind appearance
+      - Gentle expression
+      - Could be older character
+      - Warm colors
