@@ -1,0 +1,88 @@
+{
+  "permissions": {
+    "allow": [
+      "# PiggyTales Script Permissions",
+      "Bash(bash **/scripts/**/*.sh:*)",
+      "Bash(chmod +x **/scripts/**/*.sh:*)",
+      "Read(./**)",
+      "Edit(./**)",
+      "Write(./**)",
+
+      "# File Operations (Read-only)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+
+      "# Git (Read-only)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git branch:*)",
+      "Bash(git show:*)",
+
+      "# Audio/Media Operations",
+      "Bash(ffmpeg -i:*)",
+      "Bash(ffprobe:*)",
+
+      "# Project Info",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)"
+    ],
+    "deny": [
+      "# Dangerous Operations",
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)",
+      "Bash(git push --force:*)",
+      "Bash(npm publish:*)"
+    ],
+    "ask": [
+      "# Operations that need confirmation",
+      "Bash(git commit:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)"
+    ]
+  },
+
+  "auto_approve": {
+    "description": "Auto-approve these AI actions without prompting",
+    "enabled": true,
+    "actions": [
+      "read_file",
+      "list_dir",
+      "grep",
+      "codebase_search"
+    ]
+  },
+
+  "workflow": {
+    "auto_continue_after_approval": false,
+    "show_token_usage": true,
+    "default_workflow_mode": "standard",
+    "default_audience": "children"
+  },
+
+  "voice": {
+    "provider": "vbee",
+    "default_voice_id": "hn_female_ngochuyen_news_48k-fhg",
+    "emotion_intensity": "medium"
+  },
+
+  "content_safety": {
+    "enabled": true,
+    "strict_mode": true,
+    "auto_block_prohibited": true
+  },
+
+  "notes": [
+    "This is a template file. Copy to settings.local.json and customize.",
+    "Update voice provider settings with your API keys.",
+    "Content safety is enabled by default for child protection.",
+    "Deny list takes precedence over allow list."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "piggytales",
+  "owner": {
+    "name": "Nguyen Thien Thanh",
+    "email": "nguyenthienthanh.kiyoshi@gmail.com",
+    "url": "https://github.com/nguyenthienthanh"
+  },
+  "plugins": [
+    {
+      "name": "piggytales",
+      "source": "./piggytales",
+      "description": "PiggyTales - AI Content Creation Team for Children & Teens. Automated audiobooks, animations, and short videos with 22 specialized agents and child-safe content guidelines. 🐷🍄",
+      "version": "1.0.0"
+    }
+  ]
+}

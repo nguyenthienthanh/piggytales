@@ -1,0 +1,148 @@
+# PiggyTales Configuration Example
+# Copy to piggytales-config.yaml and customize
+
+# Project Settings
+project:
+  name: "My PiggyTales Project"
+  type: audiobook  # audiobook | animation | short | music-video
+  language: vi     # vi | en
+
+# Target Audience
+audience:
+  type: children   # children | teens | family | young-adult
+  age_range: "4-12"
+  custom_description: ""
+
+# Workflow Settings
+workflow:
+  mode: standard   # full | standard | lite | express | custom
+  complexity: standard  # simple | standard | complex | auto
+
+  # Phase Configuration
+  phases:
+    discovery: true
+    script: true
+    asset: true
+    production: true
+
+  # Council Configuration
+  council:
+    mode: standard  # deep | standard | quick | none
+    after_script: true
+    after_production: true
+
+# Voice Production (Vbee)
+voice:
+  provider: vbee
+  voice_id: "hn_female_ngochuyen_news_48k-fhg"
+  # Alternative voices:
+  # - hn_female_maianh_news_48k-fhg
+  # - hn_male_minhhoang_news_48k-fhg
+
+  emotion:
+    enabled: true
+    intensity: medium  # low | medium | high
+
+  output:
+    format: mp3
+    sample_rate: 48000
+    bitrate: 192
+
+# Visual Production (Animation only)
+visual:
+  style: "cute kawaii, bright colors, child-friendly"
+  aspect_ratio: "16:9"  # 16:9 | 9:16 | 1:1
+
+  # AI Generation Settings
+  image:
+    provider: auto  # auto | nanobanana | midjourney | dalle
+    quality: standard  # draft | standard | high
+
+  video:
+    provider: auto  # auto | veo3 | runway
+    duration: 5  # seconds per scene
+
+# SFX Configuration
+sfx:
+  library: built-in  # built-in | elevenlabs | custom
+  auto_generate: true
+
+  # ElevenLabs (optional)
+  elevenlabs:
+    enabled: false
+    # api_key: "your-api-key"
+
+# Platform Targets
+platforms:
+  - youtube
+  - youtube-kids
+  # - tiktok
+  # - shorts
+
+# SEO Settings
+seo:
+  auto_generate: true
+  languages:
+    - vi
+    - en
+
+  # Hashtags
+  hashtags:
+    - truyencotichhay
+    - truyenthieunhi
+    - audiobook
+
+# Content Safety (CRITICAL)
+content_safety:
+  enabled: true
+  strict_mode: true
+
+  # Prohibited content auto-blocked
+  auto_block:
+    - violence
+    - horror
+    - sexual
+    - profanity
+    - substances
+
+  # Content requiring human review
+  requires_review:
+    - death_themes
+    - conflict
+    - emotional_scenes
+
+# Human Gates
+human_gates:
+  script_approval: true
+  asset_approval: false
+  final_approval: true
+
+  # Auto-approve low-risk decisions
+  auto_approve:
+    - sfx_selection
+    - minor_formatting
+    - technical_fixes
+
+# Export Settings
+export:
+  format: folder  # folder | zip
+  include:
+    - voice
+    - scripts
+    - seo
+    - guides
+    # - prompts
+    # - sfx
+
+# Notifications
+notifications:
+  enabled: false
+  # slack:
+  #   webhook_url: "https://hooks.slack.com/..."
+  #   channel: "#content-team"
+
+# Debug Settings
+debug:
+  enabled: false
+  log_level: info  # debug | info | warn | error
+  save_logs: true

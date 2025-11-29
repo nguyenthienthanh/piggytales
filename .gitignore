@@ -13,12 +13,14 @@
 
 # Environment
 .env
+.envrc
 .env.local
 .env.*.local
 
 # Logs
 *.log
-logs/
+piggytales/logs/*
+!piggytales/logs/.gitkeep
 
 # Temporary files
 tmp/
@@ -33,7 +35,14 @@ output/
 # Dependencies
 node_modules/
 
-# Project-specific
-exports/
-production/
-.cache/
+# PiggyTales Project-specific
+piggytales/exports/
+piggytales/production/
+piggytales/.cache/
+piggytales/project-contexts/*/
+!piggytales/project-contexts/.gitkeep
+!piggytales/project-contexts/template/
+
+# Local settings
+settings.local.json
+piggytales-config.yaml

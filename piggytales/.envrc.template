@@ -1,0 +1,55 @@
+# .envrc - PiggyTales Integration Configuration
+# Copy to .envrc and fill in your credentials
+# This file is git-ignored and contains sensitive tokens
+# DO NOT COMMIT THIS FILE
+
+# ============================================
+# Project Configuration
+# ============================================
+export PROJECT_NAME="{{PROJECT_NAME}}"
+export PROJECT_ENV="{{PROJECT_ENV}}"
+
+# ============================================
+# Vbee TTS Integration (Required)
+# ============================================
+export VBEE_API_KEY="{{VBEE_API_KEY}}"
+export VBEE_API_URL="https://api.vbee.vn/v1"
+export VBEE_DEFAULT_VOICE="hn_female_ngochuyen_news_48k-fhg"
+
+# ============================================
+# ElevenLabs SFX Integration (Optional)
+# ============================================
+export ELEVENLABS_API_KEY="{{ELEVENLABS_API_KEY}}"
+export ELEVENLABS_SFX_ENABLED="false"
+
+# ============================================
+# Jira Integration (Optional)
+# ============================================
+export JIRA_URL="{{JIRA_URL}}"
+export JIRA_EMAIL="{{JIRA_EMAIL}}"
+export JIRA_API_TOKEN="{{JIRA_API_TOKEN}}"
+export JIRA_PROJECT_KEY="{{JIRA_PROJECT_KEY}}"
+
+# ============================================
+# Confluence Integration (Optional)
+# ============================================
+export CONFLUENCE_URL="{{CONFLUENCE_URL}}"
+export CONFLUENCE_EMAIL="{{CONFLUENCE_EMAIL}}"
+export CONFLUENCE_API_TOKEN="{{CONFLUENCE_API_TOKEN}}"
+export CONFLUENCE_SPACE_KEY="{{CONFLUENCE_SPACE_KEY}}"
+
+# ============================================
+# Slack Integration (Optional)
+# ============================================
+export SLACK_BOT_TOKEN="{{SLACK_BOT_TOKEN}}"
+export SLACK_CHANNEL_ID="{{SLACK_CHANNEL_ID}}"
+export SLACK_WEBHOOK_URL="{{SLACK_WEBHOOK_URL}}"
+
+# ============================================
+# PiggyTales Configuration
+# ============================================
+export PIGGYTALES_AUTO_APPROVE="false"
+export PIGGYTALES_DEFAULT_AUDIENCE="children"
+export PIGGYTALES_DEFAULT_WORKFLOW="standard"
+export PIGGYTALES_CONTENT_SAFETY="strict"
+export PIGGYTALES_TOKEN_WARNING="150000"

@@ -1,0 +1,38 @@
+{
+  "name": "piggytales",
+  "version": "1.0.0",
+  "description": "PiggyTales - AI Content Creation Team for Children & Teens. Automated audiobooks, animations, and short videos with 22 specialized agents and child-safe content guidelines.",
+  "author": {
+    "name": "Nguyen Thien Thanh",
+    "email": "nguyenthienthanh.kiyoshi@gmail.com",
+    "url": "https://github.com/nguyenthienthanh"
+  },
+  "homepage": "https://github.com/nguyenthienthanh/piggytales#readme",
+  "repository": "https://github.com/nguyenthienthanh/piggytales",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "claude-code-plugin",
+    "piggytales",
+    "content-creation",
+    "audiobooks",
+    "animations",
+    "children-content",
+    "ai-agents",
+    "vietnamese-voice",
+    "vbee"
+  ],
+  "mascots": {
+    "piggy": {
+      "emoji": "🐷",
+      "role": "Critic - Quality Control",
+      "personality": "Thoughtful, protective, constructive"
+    },
+    "shroom": {
+      "emoji": "🍄",
+      "role": "Optimist - Creativity",
+      "personality": "Enthusiastic, creative, supportive"
+    }
+  },
+  "tagline": "Where Piggy & Shroom tell amazing tales"
+}

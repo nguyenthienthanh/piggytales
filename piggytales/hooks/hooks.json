@@ -1,0 +1,86 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "🐷🍄 PiggyTales v1.0.0 - Where Piggy & Shroom tell amazing tales!\n\n**Quick Commands:**\n- /tale new audiobook \"Title\" - Create new audiobook\n- /tale quick test \"Title\" - Quick draft/test\n- /tale status - Check project status\n- /tale help - Show all commands\n\n**Presets:**\n- /tale preset audiobook-simple\n- /tale preset animation-full\n- /tale preset quick-test\n\n**Target Audiences:** children (4-12), teens (13-17), family, young-adult\n\nType any command or describe your content idea - let's create amazing tales together!"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "Block dangerous destructive commands",
+            "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -qE '(rm -rf /|mkfs|dd if=|:(){|fork|shutdown|reboot|halt)'; then echo '🐷❌ Blocked: Potentially destructive command detected' >&2; exit 2; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "Remind about content safety for script files",
+            "command": "if echo \"$CLAUDE_TOOL_INPUT\" | grep -qiE '(script|story|content)'; then echo '🐷❓ Reminder: Ensure content follows child-safety guidelines' >&2; fi"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "Log command execution for workflow tracking",
+            "command": "if [ -d .piggytales/logs ]; then echo \"[$(date '+%Y-%m-%d %H:%M:%S')] Bash: $CLAUDE_TOOL_INPUT\" >> .piggytales/logs/commands.log; fi"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "Detect /tale or /t commands",
+            "command": "if echo \"$CLAUDE_USER_INPUT\" | grep -qE '^/(tale|t) '; then echo '🐷🍄 PiggyTales command detected' >&2; fi"
+          },
+          {
+            "type": "command",
+            "comment": "Detect story/content keywords for quick suggestions",
+            "command": "if echo \"$CLAUDE_USER_INPUT\" | grep -qiE '(audiobook|animation|story|tale|truyen|video)'; then echo '🍄✨ Content creation detected - consider using /tale new or /tale quick' >&2; fi"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "Notify about pending approvals",
+            "command": "if [ -f .piggytales/state/pending-approval.json ]; then echo '🐷❓ PiggyTales: Pending approval detected. Use /tale approve or /tale reject' >&2; fi"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "Save workflow state on session end",
+            "command": "if [ -f .piggytales/state/workflow.json ]; then echo '🐷🍄 PiggyTales: Workflow state saved. Use /tale continue to resume.' >&2; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
