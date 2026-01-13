@@ -151,6 +151,71 @@ rules:
 
 ---
 
+## Language Consistency Rules
+
+### Bilingual Script Standard
+
+```yaml
+language_separation:
+  english_elements:
+    purpose: "Technical directions for production team"
+    applies_to:
+      - Scene headers and titles
+      - Camera directions
+      - Action descriptions
+      - Transition notes
+      - Animation cues
+      - Expression tags (technical)
+      - Technical timing notes
+      - Production instructions
+    examples:
+      - "SCENE 001: The Magic Forest"
+      - "[CAMERA] Medium shot - slow zoom"
+      - "[ACTION] Character walks into frame"
+      - "[TRANSITION] Fade to black"
+      - "[Expression: eyes wide, surprised]"
+
+  vietnamese_elements:
+    purpose: "Content for audience (voice, text)"
+    applies_to:
+      - All character dialogue
+      - All narrator lines
+      - On-screen text/titles
+      - Character thoughts
+      - Emotion words in dialogue
+    examples:
+      - '"Ôi! Đây là gì thế này?"'
+      - '"Ngày xửa ngày xưa..."'
+      - '(emotion: vui, buồn, sợ)'
+
+enforcement:
+  - Script Writer must maintain separation
+  - Emotion Tagger verifies language use
+  - QA Reviewer checks compliance
+  - Non-compliant scripts flagged for revision
+```
+
+### Example Format
+
+```markdown
+## SCENE 003: The Discovery (English header)
+
+**[VISUAL]** Forest clearing at dawn (English direction)
+
+**[NARRATOR]** (tone: warm, storytelling)
+"Ngày xửa ngày xưa, trong một khu rừng xa xôi..." (Vietnamese)
+[Voice: gentle pace, inviting] (English direction)
+
+**[ACTION]** Lan walks slowly into the clearing (English)
+
+**[LAN]** (emotion: tò mò, intensity: trung bình)
+[Expression: curious look, head tilted] (English)
+"Hình như có điều gì đó kỳ lạ ở đây..." (Vietnamese)
+[Voice: curious, questioning] (English)
+```
+
+---
+
 ## Quality Standards
 
 ### Output Requirements
@@ -162,12 +227,15 @@ all_outputs:
   - No placeholder text
   - Verified accuracy
   - Brand voice applied
+  - Language consistency maintained
 
 scripts:
-  - Age-appropriate language
-  - Clear structure
+  - Age-appropriate Vietnamese dialogue
+  - Clear English technical directions
   - Emotion tags included
   - SFX placeholders marked
+  - Expression cues for animation
+  - Timing information included
 
 prompts:
   - Detailed descriptions

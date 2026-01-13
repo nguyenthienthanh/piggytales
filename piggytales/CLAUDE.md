@@ -9,12 +9,24 @@
 
 ## Overview
 
-PiggyTales is an AI agent team for automated content creation targeting **children and teenagers**. It produces:
+PiggyTales is an AI agent team for automated **animation-ready content creation** targeting **children and teenagers**. All scripts are designed to be directly animatable with synchronized narration and character voices.
 
-- **Audiobooks** - Vietnamese voice narration with emotional delivery
-- **Animations** - Scene-based visual storytelling
-- **Short Videos** - TikTok/YouTube Shorts content
-- **Music Videos** - Audio-visual content
+### Primary Output: Animation Scripts
+Scripts include:
+- **Visual directions** (English) - Camera, actions, expressions, transitions
+- **Vietnamese dialogue** - Character voices and narrator lines
+- **Timing cues** - Animation sync points, expression changes
+- **Production notes** - SFX, music, special effects
+
+### Content Types
+- **Animated Stories** - Full animation scripts with visual direction
+- **Audiobooks** - Voice narration scripts with emotion tags
+- **Short Videos** - TikTok/YouTube Shorts animation scripts
+- **Music Videos** - Audio-visual content scripts
+
+### Language Standard
+- **Technical directions**: English (for production team)
+- **Dialogue/Narration**: Vietnamese (for audience)
 
 ### Mascots
 
@@ -91,10 +103,10 @@ audiences:
 ### Script Phase (4 agents)
 | Agent | Purpose | Required |
 |-------|---------|----------|
-| **Script Writer** | Write age-appropriate scripts | **YES** |
-| **Scene Director** | Scene breakdown | No (audiobook) |
-| **Emotion Tagger** | Voice emotion markers | **YES** |
-| **SFX Planner** | Sound effects planning | No |
+| **Script Writer** | Write animation-ready scripts with visual directions | **YES** |
+| **Scene Director** | Detailed scene breakdown, timing, character blocking | **YES** (animation) |
+| **Emotion Tagger** | Voice emotions + character expressions for animation | **YES** |
+| **SFX Planner** | Sound effects planning and timing | No |
 
 ### Asset Phase (4 agents)
 | Agent | Purpose | Required |
