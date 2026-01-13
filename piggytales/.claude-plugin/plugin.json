@@ -29,18 +29,5 @@
     "music-generation",
     "auto-publishing",
     "trend-analysis"
-  ],
-  "mascots": {
-    "piggy": {
-      "emoji": "🐷",
-      "role": "Critic - Quality Control",
-      "personality": "Thoughtful, protective, constructive"
-    },
-    "shroom": {
-      "emoji": "🍄",
-      "role": "Optimist - Creativity",
-      "personality": "Enthusiastic, creative, supportive"
-    }
-  },
-  "tagline": "Where Piggy & Shroom tell amazing tales"
+  ]
 }
