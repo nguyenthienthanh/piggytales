@@ -1,7 +1,7 @@
 {
   "name": "piggytales",
-  "version": "1.0.0",
-  "description": "PiggyTales - AI Content Creation Team for Children & Teens. Automated audiobooks, animations, and short videos with 22 specialized agents and child-safe content guidelines.",
+  "version": "2.0.0",
+  "description": "PiggyTales - AI Content Creation Platform for Children & Teens. Fully automated content pipeline with 27 agents, 8 MCP integrations (Veo3, Suno, Supabase), trend research, auto-publishing, and database management.",
   "author": {
     "name": "Nguyen Thien Thanh",
     "email": "nguyenthienthanh.kiyoshi@gmail.com",
@@ -20,7 +20,15 @@
     "children-content",
     "ai-agents",
     "vietnamese-voice",
-    "vbee"
+    "vbee",
+    "mcp",
+    "veo3",
+    "suno",
+    "supabase",
+    "video-generation",
+    "music-generation",
+    "auto-publishing",
+    "trend-analysis"
   ],
   "mascots": {
     "piggy": {

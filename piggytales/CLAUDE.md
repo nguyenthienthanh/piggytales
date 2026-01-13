@@ -1,8 +1,9 @@
 # PiggyTales - AI Content Creation Team for Children & Teens
 
-> **Version:** 1.1
+> **Version:** 2.0
 > **Type:** Claude Code Plugin (CCPM - Claude Code Project Management)
 > **Tagline:** "Where Piggy & Shroom tell amazing tales"
+> **MCP Integrations:** Supabase, Context7, Playwright, YouTube
 
 ---
 
@@ -315,6 +316,32 @@ complex:
 ```bash
 /tale batch start|add|list|run|clear
 /tale series create|add|list|show|generate-next|template
+```
+
+### Database Commands (v2.0)
+```bash
+/tale db status                    # Check database connection
+/tale db projects                  # List all projects
+/tale db project <id>              # Show project details
+/tale db assets <project-id>       # List project assets
+/tale db publications              # List all publications
+/tale db analytics <pub-id>        # Show publication analytics
+/tale db trends                    # Show active trends
+/tale db templates                 # List available templates
+/tale db prompts <category>        # List prompts by category
+/tale db sync                      # Sync local files with database
+```
+
+### Automation Commands (v2.0)
+```bash
+/tale auto "prompt"                # Fully automated pipeline
+/tale auto --research              # Include trend research
+/tale auto --publish               # Auto-publish when ready
+/tale research "topic"             # Research trends only
+/tale trends --platform <p>        # Show platform trends
+/tale schedule <id> --time <t>     # Schedule publication
+/tale publish <id> --platform <p>  # Publish immediately
+/tale analytics <id>               # Show performance
 ```
 
 ### Aliases
