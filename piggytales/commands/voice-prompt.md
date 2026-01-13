@@ -1,8 +1,8 @@
 # Command: /tale voice-prompt
 
-> **Purpose:** Convert existing story text to optimized ElevenLabs TTS prompt
-> **Skill:** `elevenlabs-tts.md`
-> **Workflow:** Story Input -> Analysis -> ElevenLabs Prompt
+> **Purpose:** Convert animation scripts or story text to ElevenLabs TTS prompts with emotion tags and SFX markers
+> **Skill:** `elevenlabs-tts.md`, `animation-scripting.md`
+> **Workflow:** Animation Script / Story -> Analysis -> ElevenLabs Prompt + SFX Guide
 
 ---
 
@@ -16,61 +16,85 @@
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| `--lang <language>` | Story language (vi, en) | auto-detect |
+| `--source <type>` | Input type (animation, story, text) | animation |
+| `--lang <language>` | Story language (vi, en) | vi |
 | `--model <model>` | ElevenLabs model (v3, v2, turbo, flash) | v3 |
 | `--style <style>` | Narration style (warm, dramatic, soothing, playful, neutral) | warm |
 | `--stability <value>` | Voice stability 0.0-1.0 | 0.45 |
 | `--speed <value>` | Speaking speed 0.7-1.2 | 0.95 |
-| `--split` | Split into segments for long content | false |
+| `--sfx` | Include SFX sync guide | true |
+| `--split` | Split into segments by scene | true |
 
 ---
 
 ## Workflow
 
-### Step 1: User Shares Story
+### Step 1: User Provides Input
 
-User provides story text in any format:
-- Plain text
-- Markdown
-- Copy-pasted from document
+User provides animation script or story in any format:
+- **Animation Script** (preferred): Full script with visual directions, emotions, SFX markers
+- **Plain text story**: Will be analyzed and converted
+- **Markdown**: Structured story format
 
 ### Step 2: Analysis
 
-Claude analyzes the story for:
+Claude analyzes the input for:
 
 ```yaml
 analysis:
-  language: "Detect Vietnamese or English"
+  source_type: "animation_script / story / text"
+  language: "Vietnamese (dialogue) / English (directions)"
   length: "Estimate duration (150 words/min avg)"
+
   characters:
-    - name: "Character name"
-      personality: "Inferred traits"
-      voice_suggestion: "Recommended voice type"
+    - name: "Character name (Vietnamese)"
+      personality: "From script or inferred"
+      voice_type: "Child/Adult/Elder + Gender"
+      emotion_range: "Primary emotions"
+
+  scenes:
+    - scene_number: "001"
+      duration: "~30s"
+      characters_present: ["Lan", "Minh"]
+      mood: "Cheerful opening"
 
   emotional_beats:
-    - timestamp: "~0:30"
-      emotion: "excited"
-      intensity: "high"
+    - scene: "001"
+      line: "003"
+      emotion_vn: "phấn khích"
+      emotion_en: "excited"
+      intensity: "cao"
+
+  sfx_markers:
+    - scene: "001"
+      sfx: "Forest ambience"
+      timing: "Start of scene"
+      trigger: "Before narration"
+
+    - scene: "001"
+      sfx: "Magic sparkle"
+      timing: "On word"
+      trigger: '"kỳ diệu"'
 
   pacing_notes:
-    - "Opening is calm, builds tension"
-    - "Climax at middle, fast-paced"
-    - "Gentle resolution"
+    - "Opening is calm, builds curiosity"
+    - "Discovery moment - fast, excited"
+    - "Mystery build - slow, tense"
 
   pronunciation_concerns:
     - word: "Nguyễn"
       note: "Vietnamese name, preserve tones"
 ```
 
-### Step 3: Generate Optimized Prompt
+### Step 3: Generate ElevenLabs Prompt with SFX
 
-Transform story based on selected model:
+Transform input to ElevenLabs prompt with emotion tags and SFX sync guide:
 
 ---
 
 ## Output Format by Model
 
-### Eleven v3 Output
+### Eleven v3 Output (with SFX Sync)
 
 ```markdown
 # ElevenLabs Prompt - [Title]
@@ -79,54 +103,134 @@ Transform story based on selected model:
 - **Model:** Eleven v3
 - **Stability:** [0.35-0.50 for expressive, 0.55-0.70 for calm]
 - **Speed:** [0.85-1.0]
+- **Language:** vi
 - **Recommended Voice:** [suggestion based on content]
 
-## Story with Audio Tags
+---
 
-[softly] Once upon a time... [pause]
+## CHARACTER VOICE PROFILES
 
-[warmly] There was a little girl named Mai. [cheerfully] She loved to sing!
-
-[excitedly] "Look, mama!" [laughs] "A butterfly!"
-
-[whispers][nervously] But then... she heard something strange... [pause]
-
-[gasps] What was that?
+| Character | Voice Type | Pitch | Speed | Emotion Range |
+|-----------|-----------|-------|-------|---------------|
+| Narrator | Adult Female | Medium | Normal | warm, mysterious |
+| Mai | Child Female | High | Normal-Fast | happy, scared, curious |
+| Bà Ngoại | Elder Female | Low | Slow | gentle, wise |
 
 ---
 
-## Character Voice Guide
+## SCENE 001: Opening
 
-**Narrator:** Warm, engaging, slightly slower pace
-- Use [softly] for intimate moments
-- Use [excitedly] for discoveries
-- Use [whispers] for suspense
+### Line 001 - NARRATOR
+**Emotion:** ấm áp → [warmly][softly]
 
-**Mai (child):** Bright, innocent
-- Higher energy, more [cheerfully] and [excitedly]
-- [laughs] and [giggles] for playful moments
+[warmly][softly] Ngày xửa ngày xưa, ở một ngôi làng nhỏ bên sông... [pause]
 
----
-
-## Segment Breakdown (if long)
-
-| Segment | Duration | Primary Emotion |
-|---------|----------|-----------------|
-| Opening | ~1:00 | calm, curious |
-| Discovery | ~1:30 | excited |
-| Challenge | ~2:00 | tense, nervous |
-| Resolution | ~1:00 | warm, happy |
+<!-- SFX: River flowing + birds - START before line, fade under -->
+<!-- Animation: Wide shot village, morning mist -->
 
 ---
 
-## Pronunciation Notes
+### Line 002 - NARRATOR
+**Emotion:** ấm áp → [warmly]
+
+[warmly] Có một cô bé tên là Mai.
+
+<!-- Animation: Camera pan to Mai's house -->
+
+---
+
+### Line 003 - MAI
+**Emotion:** vui + phấn khích → [cheerfully][excitedly]
+
+[cheerfully] "Ôi, đẹp quá!" [laughs softly]
+
+<!-- SFX: Butterfly wings flutter - ON "đẹp quá" -->
+<!-- Animation: Mai's eyes widen, smile grows -->
+
+---
+
+### Line 004 - NARRATOR
+**Emotion:** buồn nhẹ → [sadly]
+
+[sadly] Nhưng con bướm bay đi mất...
+
+<!-- SFX: Soft wind - after "mất" -->
+<!-- Animation: Mai's expression falls -->
+
+---
+
+### Line 005 - BÀ NGOẠI
+**Emotion:** dịu dàng + ấm áp → [gently][warmly]
+
+[gently][warmly] "Cháu ơi, những gì đẹp nhất không cần phải giữ lại."
+
+<!-- Animation: Close-up grandmother's gentle smile -->
+
+---
+
+## SFX SYNC GUIDE
+
+| Line | Time | SFX | Trigger | Volume | Duration |
+|------|------|-----|---------|--------|----------|
+| 001 | 0:00 | River + birds | Before line | 30% | Continuous |
+| 003 | ~0:20 | Butterfly flutter | "đẹp quá" | 50% | 2s |
+| 004 | ~0:30 | Soft wind | After "mất" | 40% | 3s |
+
+---
+
+## EMOTION FLOW
+
+| Line | Character | Emotion (VN) | ElevenLabs Tags | Animation Sync |
+|------|-----------|--------------|-----------------|----------------|
+| 001 | Narrator | ấm áp | [warmly][softly] | Fade in |
+| 003 | Mai | phấn khích | [cheerfully][laughs] | Eyes widen |
+| 004 | Narrator | buồn | [sadly] | Expression falls |
+| 005 | Bà Ngoại | dịu dàng | [gently][warmly] | Gentle smile |
+
+---
+
+## CHARACTER VOICE GUIDE
+
+**Narrator:** Warm, gentle grandmother-like voice
+- [warmly][softly] for intimate moments
+- [sadly] with gentle restraint
+- [whispers] for mystery
+
+**Mai (child):** Bright, innocent, emotional range
+- [cheerfully][excitedly][laughs] for joy
+- [sadly] with sincerity
+- Quick emotion transitions
+
+**Bà Ngoại:** Wise, loving, slow and deliberate
+- [gently][warmly] always
+- Slower pace for wisdom
+- Comforting tone
+
+---
+
+## PRONUNCIATION NOTES
 
 | Word | Pronunciation | Note |
 |------|---------------|------|
-| Mai | /mai/ | Vietnamese name |
+| Mai | /mai/ | Vietnamese name, means "apricot flower" |
+| Bà ngoại | /ba ngwai/ | Maternal grandmother |
+| Đẹp quá | /dep kwa/ | "So beautiful" - emphasis word |
+
+---
+
+## NEXT_TEXT API HINTS
+
+Use these in ElevenLabs API for emotion context:
+
+```json
+{
+  "text": "Ôi, đẹp quá!",
+  "next_text": "cô bé reo lên đầy phấn khích, mắt sáng rỡ khi nhìn thấy con bướm"
+}
+```
 ```
 
-### Multilingual v2 / Turbo v2.5 Output
+### Multilingual v2 / Turbo v2.5 Output (with SFX Sync)
 
 ```markdown
 # ElevenLabs Prompt - [Title]
@@ -135,43 +239,69 @@ Transform story based on selected model:
 - **Model:** Multilingual v2 / Turbo v2.5
 - **Stability:** [value]
 - **Speed:** [value]
-- **Language Code:** vi / en
-
-## Story with SSML & Emotion Context
-
-Once upon a time, the narrator began softly...
-
-<break time="0.5s" />
-
-There was a little girl named Mai, her voice bright and innocent. She loved to sing!
-
-"Look, mama!" Mai exclaimed with pure joy, her eyes sparkling. "A butterfly!"
-
-<break time="0.8s" />
-
-But then... she heard something strange, the narrator whispered ominously.
-
-<break time="1s" />
-
-"What was that?" she asked, her voice trembling slightly.
+- **Language Code:** vi
 
 ---
 
-## Emotion Cues Reference
+## SCENE 001: Opening
 
-Instead of audio tags, use narrative descriptions:
-- "she said excitedly"
-- "he whispered nervously"
-- "the narrator intoned dramatically"
-- "her voice trembling with emotion"
+### Line 001 - NARRATOR
+Ngày xửa ngày xưa, ở một ngôi làng nhỏ bên sông, người kể bắt đầu một cách dịu dàng...
+
+<break time="1s" />
+
+<!-- SFX: River flowing + birds - START before, fade under -->
+
+### Line 002 - NARRATOR
+Có một cô bé tên là Mai, giọng nói ấm áp và yêu thương.
+
+### Line 003 - MAI
+"Ôi, đẹp quá!" Mai reo lên đầy phấn khích, mắt sáng rỡ khi nhìn thấy con bướm.
+
+<!-- SFX: Butterfly flutter - ON "đẹp quá" -->
+
+### Line 004 - NARRATOR
+Nhưng con bướm bay đi mất, người kể nói một cách buồn bã nhẹ nhàng...
+
+<break time="0.8s" />
+
+<!-- SFX: Soft wind - after break -->
+
+### Line 005 - BÀ NGOẠI
+Bà ngoại nhìn Mai âu yếm, giọng nhẹ nhàng và ấm áp. "Cháu ơi, những gì đẹp nhất không cần phải giữ lại."
+
+---
+
+## SFX SYNC GUIDE
+
+| Line | Time | SFX | Trigger | Volume |
+|------|------|-----|---------|--------|
+| 001 | 0:00 | River + birds | Before line | 30% |
+| 003 | ~0:20 | Butterfly flutter | "đẹp quá" | 50% |
+| 004 | ~0:30 | Soft wind | After break | 40% |
+
+---
+
+## EMOTION CONTEXT PHRASES (Vietnamese)
+
+Instead of audio tags, embed emotion in narrative:
+
+| Emotion (VN) | Narrative Phrase |
+|--------------|------------------|
+| vui vẻ | "giọng vui vẻ, phấn khích" |
+| buồn bã | "giọng buồn bã, nhẹ nhàng" |
+| sợ hãi | "giọng run run, lo lắng" |
+| ngạc nhiên | "giọng ngạc nhiên, mắt mở to" |
+| ấm áp | "giọng ấm áp, dịu dàng" |
+| tò mò | "giọng đầy tò mò" |
 
 ---
 
 ## Voice Direction
 
-**Overall Tone:** [Description]
-**Pacing:** [Description]
-**Emotional Arc:** [Start -> Middle -> End]
+**Overall Tone:** Warm, storytelling
+**Pacing:** Moderate with pauses for effect
+**Emotional Arc:** Warm opening → Joy → Sadness → Wisdom/Comfort
 ```
 
 ---

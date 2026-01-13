@@ -269,38 +269,343 @@ best_practices:
 
 ---
 
-## Storytelling Prompt Structure
+## Animation Script to ElevenLabs Prompt
 
-### For Eleven v3 (Audio Tags)
+### Converting Animation Scripts
+
+Animation scripts contain visual directions (English) and dialogue (Vietnamese). For ElevenLabs, extract only voice content while preserving emotion and SFX markers.
+
+```yaml
+conversion_process:
+  1_extract_voice_lines:
+    - Character dialogue (Vietnamese)
+    - Narrator lines (Vietnamese)
+    - Emotion tags from script
+
+  2_add_audio_tags:
+    - Map emotion tags to ElevenLabs audio tags
+    - Add voice direction tags
+    - Insert pause markers
+
+  3_mark_sfx_sync:
+    - Include SFX cues as comments
+    - Note timing relationships
+    - Mark post-production SFX points
+
+  4_preserve_animation_sync:
+    - Keep timing markers
+    - Note expression sync points
+    - Include lip-sync priority markers
 ```
-[Narrator voice - warm, engaging]
 
-[softly] Once upon a time, in a land far, far away... [pause]
+---
 
-There lived a little pig named Piggy. [cheerfully] He loved to explore the mushroom forest!
+## Storytelling Prompt Structure with SFX
 
-[excitedly] "Look, Shroom!" [laughs] "I found a magical flower!"
+### For Eleven v3 (Audio Tags) - Animation Ready
 
-[curious] Shroom hopped over... "What kind of flower is it?"
+```markdown
+# ElevenLabs Prompt: [Title]
 
-[whispers][nervously] But something was watching them from the shadows... [pause]
+## Voice Settings
+- Model: Eleven v3
+- Stability: 0.45
+- Speed: 0.90
+
+---
+
+## SCENE 001: Opening
+
+### Voice Line 001 - NARRATOR
+[softly] Ngày xửa ngày xưa, ở một vùng đất xa xôi... [pause]
+<!-- SFX: Ambient forest sounds - start before, fade under -->
+<!-- Animation: Fade in on forest landscape -->
+
+### Voice Line 002 - NARRATOR
+[warmly] Có một chú heo nhỏ tên là Piggy. [cheerfully] Piggy rất thích khám phá khu rừng nấm!
+<!-- SFX: Birds chirping - layer under -->
+<!-- Animation: Character introduction walk -->
+
+### Voice Line 003 - PIGGY
+[excitedly] "Shroom ơi, nhìn này!" [laughs] "Tớ tìm thấy một bông hoa kỳ diệu!"
+<!-- SFX: Magical sparkle - on "kỳ diệu" -->
+<!-- Animation: Character points, eyes wide -->
+
+### Voice Line 004 - SHROOM
+[curious] "Đó là loại hoa gì thế?"
+<!-- Animation: Head tilt, curious expression -->
+
+### Voice Line 005 - NARRATOR
+[whispers][nervously] Nhưng có điều gì đó đang theo dõi họ từ trong bóng tối... [pause]
+<!-- SFX: Ominous tone - start at "bóng tối" -->
+<!-- SFX: Twig snap - after pause -->
+<!-- Animation: Slow zoom, shadow movement -->
+
+---
+
+## SFX SYNC GUIDE
+
+| Line | Time | SFX | Trigger Word | Volume |
+|------|------|-----|--------------|--------|
+| 001 | 0:00 | Forest ambience | Start | Low |
+| 003 | 0:15 | Magic sparkle | "kỳ diệu" | Medium |
+| 005 | 0:25 | Ominous tone | "bóng tối" | Low |
+| 005 | 0:30 | Twig snap | After pause | Medium |
+
+---
+
+## EMOTION FLOW
+
+| Line | Character | Emotion Tag | Intensity | Notes |
+|------|-----------|-------------|-----------|-------|
+| 001 | Narrator | [softly] | low | Opening calm |
+| 002 | Narrator | [warmly] → [cheerfully] | medium | Introduction |
+| 003 | Piggy | [excitedly] | high | Discovery moment |
+| 004 | Shroom | [curious] | medium | Question |
+| 005 | Narrator | [whispers][nervously] | high | Tension build |
 ```
 
-### For Multilingual v2/Turbo (Narrative Style)
-```
-Once upon a time, in a land far, far away...
+### For Multilingual v2/Turbo (Narrative Style) - Animation Ready
 
+```markdown
+# ElevenLabs Prompt: [Title]
+
+## Voice Settings
+- Model: Multilingual v2
+- Stability: 0.50
+- Speed: 0.90
+- Language: vi
+
+---
+
+## SCENE 001: Opening
+
+### Voice Line 001 - NARRATOR
+Ngày xửa ngày xưa, ở một vùng đất xa xôi, người kể chuyện bắt đầu một cách nhẹ nhàng...
 <break time="1s" />
+<!-- SFX: Ambient forest sounds - start before, fade under -->
 
-There lived a little pig named Piggy, she said cheerfully. He loved to explore the mushroom forest!
+### Voice Line 002 - NARRATOR
+Có một chú heo nhỏ tên là Piggy, giọng nói ấm áp và vui vẻ. Piggy rất thích khám phá khu rừng nấm!
+<!-- SFX: Birds chirping - layer under -->
 
-"Look, Shroom!" Piggy exclaimed with excitement, laughing. "I found a magical flower!"
+### Voice Line 003 - PIGGY
+"Shroom ơi, nhìn này!" Piggy reo lên đầy phấn khích, cười khúc khích. "Tớ tìm thấy một bông hoa kỳ diệu!"
+<!-- SFX: Magical sparkle - on "kỳ diệu" -->
 
-Shroom hopped over, his voice filled with curiosity. "What kind of flower is it?"
+### Voice Line 004 - SHROOM
+Shroom nhảy đến, giọng đầy tò mò. "Đó là loại hoa gì thế?"
 
-But something was watching them from the shadows, the narrator whispered ominously...
-
+### Voice Line 005 - NARRATOR
+Nhưng có điều gì đó đang theo dõi họ từ trong bóng tối, người kể thì thầm một cách bất an...
 <break time="1.5s" />
+<!-- SFX: Ominous tone + Twig snap after break -->
+```
+
+---
+
+---
+
+## Vietnamese Emotion to Audio Tag Mapping
+
+```yaml
+emotion_mapping:
+  vietnamese_to_elevenlabs:
+    # Happy emotions
+    vui: "[happily]"
+    vui_vẻ: "[cheerfully]"
+    hạnh_phúc: "[happily]"
+    phấn_khích: "[excitedly]"
+    hào_hứng: "[excitedly]"
+
+    # Sad emotions
+    buồn: "[sadly]"
+    buồn_bã: "[sorrowfully]"
+    đau_khổ: "[sorrowfully]"
+
+    # Fear/Nervous
+    sợ: "[nervously]"
+    sợ_hãi: "[nervously][whispers]"
+    lo_lắng: "[nervously]"
+    hồi_hộp: "[nervously]"
+
+    # Anger (capped for children)
+    giận: "[flatly]"  # Mild for children
+    tức_giận: "[flatly]"
+
+    # Surprise
+    ngạc_nhiên: "[gasps]"
+    bất_ngờ: "[gasps]"
+    sốc: "[gasps]"
+
+    # Other
+    tò_mò: "[curious]"
+    bí_ẩn: "[whispers]"
+    ấm_áp: "[warmly][softly]"
+    dịu_dàng: "[softly][gently]"
+    nghiêm_túc: "[deliberate]"
+    hài_hước: "[playfully]"
+
+intensity_modifiers:
+  thấp: "Single tag, normal delivery"
+  trung_bình: "Tag + delivery modifier"
+  cao: "Multiple tags + emphasis"
+
+examples:
+  - input: "(emotion: vui, intensity: cao)"
+    output: "[happily][excitedly] text [laughs]"
+
+  - input: "(emotion: sợ, intensity: thấp)"
+    output: "[nervously] text"
+
+  - input: "(emotion: ngạc nhiên, intensity: cao)"
+    output: "[gasps] text!"
+```
+
+---
+
+## SFX Integration Guidelines
+
+### SFX Placement Rules
+
+```yaml
+sfx_timing:
+  before_voice:
+    - Ambient/background sounds
+    - Scene-setting sounds
+    - Anticipation sounds
+    offset: "0.5-2s before voice starts"
+
+  during_voice:
+    - Background ambience (low volume)
+    - Continuous sounds (wind, rain)
+    ducking: "Lower SFX when voice speaks"
+
+  sync_with_word:
+    - Accent sounds on specific words
+    - Action sounds matching dialogue
+    trigger: "Specific word in dialogue"
+
+  after_voice:
+    - Reaction sounds
+    - Transition sounds
+    - Echo/reverb effects
+    offset: "0-1s after voice ends"
+
+sfx_volume_levels:
+  background: "20-30% of voice volume"
+  accent: "60-80% of voice volume"
+  full: "80-100% of voice volume (no voice overlap)"
+```
+
+### SFX Categories for Animation
+
+```yaml
+sfx_categories:
+  ambient:
+    purpose: "Scene atmosphere"
+    examples:
+      - Forest sounds (birds, wind)
+      - City sounds (traffic, crowds)
+      - Indoor sounds (clock, fireplace)
+    volume: "Low, continuous"
+
+  character_action:
+    purpose: "Sync with character movement"
+    examples:
+      - Footsteps
+      - Door opening/closing
+      - Object pickup
+    timing: "Sync with animation"
+
+  emotional_accent:
+    purpose: "Emphasize emotional moment"
+    examples:
+      - Magic sparkle (wonder)
+      - Heartbeat (fear/tension)
+      - Soft chime (realization)
+    timing: "On trigger word or after pause"
+
+  transition:
+    purpose: "Scene change indicator"
+    examples:
+      - Whoosh (time passing)
+      - Fade out sound
+      - New scene intro sound
+    timing: "Between scenes"
+```
+
+---
+
+## Complete Animation Prompt Template
+
+```markdown
+# ElevenLabs Animation Prompt: [Title]
+
+## Project Info
+- **Project:** [Name]
+- **Scene:** [Scene number]
+- **Duration:** [Estimated]
+- **Characters:** [List]
+
+## Voice Settings
+- **Model:** Eleven v3 / Multilingual v2
+- **Stability:** [Value]
+- **Speed:** [Value]
+- **Language:** vi
+
+---
+
+## SCENE [NUMBER]: [Title]
+
+### Line 001 - [CHARACTER/NARRATOR]
+**Emotion:** [Vietnamese emotion] → [ElevenLabs tags]
+**Expression:** [For animation reference]
+
+[audio tags] "Vietnamese dialogue text" [delivery tags]
+
+<!-- SFX: [Sound] - [Timing: before/during/on word/after] - [Volume] -->
+<!-- Animation: [Visual reference for sync] -->
+
+---
+
+### Line 002 - [CHARACTER/NARRATOR]
+[Continue pattern...]
+
+---
+
+## POST-PRODUCTION GUIDE
+
+### Voice + SFX Layering Order
+1. Voice track (primary)
+2. Background ambience (continuous, low)
+3. Accent SFX (sync with words)
+4. Music (if applicable)
+
+### SFX SYNC TABLE
+
+| Line | Word/Time | SFX | File | Volume | Duration |
+|------|-----------|-----|------|--------|----------|
+| 001 | Start | Forest ambience | forest_01.wav | 25% | Continuous |
+| 003 | "kỳ diệu" | Magic sparkle | magic_sparkle.wav | 70% | 1.5s |
+
+### EMOTION TIMELINE
+
+| Time | Character | Emotion (VN) | Audio Tag | Animation Sync |
+|------|-----------|--------------|-----------|----------------|
+| 0:00 | Narrator | ấm áp | [softly][warmly] | Fade in |
+| 0:15 | Piggy | phấn khích | [excitedly][laughs] | Eyes wide, jump |
+
+---
+
+## VOICE RECORDING CHECKLIST
+
+- [ ] All Vietnamese dialogue extracted
+- [ ] Emotion tags mapped to ElevenLabs
+- [ ] SFX markers included as comments
+- [ ] Animation sync notes present
+- [ ] Pronunciation notes for names
+- [ ] Character voice profiles defined
 ```
 
 ---
@@ -310,12 +615,26 @@ But something was watching them from the shadows, the narrator whispered ominous
 Use `next_text` parameter to influence emotion without speaking it:
 ```json
 {
-  "text": "I can't believe you did that.",
-  "next_text": "she said angrily, her voice trembling with rage"
+  "text": "Tớ không thể tin được!",
+  "next_text": "cô bé nói một cách phấn khích, mắt sáng lên"
 }
 ```
 
 The model will NOT speak `next_text` but uses it as emotional context.
+
+### Vietnamese Emotion Context Examples
+
+```json
+{
+  "text": "Có ai ở đây không?",
+  "next_text": "giọng cô bé run run vì sợ hãi, tim đập thình thịch"
+}
+
+{
+  "text": "Cuối cùng cũng đến được rồi!",
+  "next_text": "anh ấy thở phào nhẹ nhõm, mỉm cười hạnh phúc"
+}
+```
 
 ---
 
